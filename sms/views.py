@@ -1009,7 +1009,7 @@ def main_water_refill(request):
             'unallocated_payments': MiwamaMpesa.objects.filter(processed=2).count(),
             'admins': CustomerSubAccounts.objects.filter(owner=customer.id).count() + 1
         }
-        return render(request, 'sms/main_meter.html', context)
+        return render(request, 'sms/main_water_refill.html', context)
 
 
 
