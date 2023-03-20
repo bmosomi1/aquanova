@@ -21,6 +21,7 @@ urlpatterns = [
     path('apps', views.apps, name='apps'),
     path('home', views.water_apps, name='water_apps'),
     path('main/meter', views.main_meter, name='main_meter'),
+    path('main/water/refill', views.main_water_refill, name='main_water_refill'),
     path('main/meter/chart', views.main_meterchart, name='main_meterchart'),
     path('client/dashboard/<int:client_id>', views.client_dashboard, name='client_dashboard'),
     path('send/', views.send, name='send'),
