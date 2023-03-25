@@ -1937,7 +1937,7 @@ def simple_sms_resend(request, message_id):
 
         )
 
-        messages.success(request, dest_msisdn)
+        messages.success(request, "Message resent sucessfully")
         return redirect('sms:water_sent_sms')
     context = {
         'client': client
