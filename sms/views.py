@@ -1923,8 +1923,8 @@ def edit_water_client(request, client_id):
 
 
 
-def simple_sms_resend(request, message_id):
-    client = WaterOutbox.objects.get(id=message_id)
+def simple_sms_resend(request, 1):
+    client = WaterOutbox.objects.get(id=1)
     if request.method == 'POST':
        
         WaterOutbox.objects.create(
