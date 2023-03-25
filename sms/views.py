@@ -1922,6 +1922,28 @@ def edit_water_client(request, client_id):
     return render(request, 'sms/edit_water_client.html', context)
 
 
+
+def simple_sms_resend(request, message_id):
+    client = WaterOutbox.objects.get(id=message_id)
+    if request.method == 'POST':
+       
+        WaterOutbox.objects.create(
+            dest_msisdn=request.POST['dest_msisdn'],
+            text_message=request.POST['text_message'],
+            user_id=100,
+            client=message_id
+            
+
+
+        )
+
+        messages.success(request, dest_msisdn)
+        return redirect('sms:water_sent_sms')
+    context = {
+        'client': client
+    }
+    return render(request, 'sms/resend_message.html', context)
+
 def edit_sys_config(request, client_id):
     client = WaterSysConf.objects.get(id=client_id)
     if request.method == 'POST':

@@ -1,0 +1,66 @@
+{% extends 'layouts/new_base.html' %}
+{% load static %}
+
+{% block additional_meta %}
+
+{% endblock %}
+
+{% block additional_styles %}
+
+{% endblock %}
+
+{% block content %}
+<div class="tile">
+<div class="tile-title">
+    <div class="row">
+        <div class="col-sm-3">
+
+        </div>
+        <div class="col-sm-2">
+
+        </div>
+        <div class="col-sm-6">
+            <h4>Resend Message</h4>
+        </div>
+
+            <a href="{% url 'sms:simple_sms_resend' %}" class="btn btn-outline-primary pull-right">Config History</a>
+
+    </div>
+    <hr style="margin-top: 1px !important;">
+</div>
+    <div class="row">
+        <div class="col-md-3">
+    </div>
+<div class="row">
+    <form action="{% url 'sms:edit_sys_config' client.id %}" method="post">
+    {% csrf_token %}
+   <div class="form-group row">
+    <label for="inputEmail3" class="">Recipient:</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control"  name ="dest_msisdn"  value="{{ client.dest_msisdn }} "placeholder="">
+    </div>
+  </div>
+   <div class="form-group row">
+    <label for="inputEmail3" class="">Message:</label>
+    <div class="col-sm-10">
+        <textarea  class="form-control"  name ="text_message" value="{{ client.text_message }}" placeholder=""></textarea>
+    </div>
+  </div>
+ 
+  </div>
+
+
+<div>
+    <button type="submit" class="btn btn-primary pull-center" >Submit</button>
+</div>
+
+
+</form>
+</div>
+    </div>
+</div>
+{% endblock %}
+
+{% block additional_scripts %}
+
+{% endblock %}

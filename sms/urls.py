@@ -27,6 +27,7 @@ urlpatterns = [
     path('send/', views.send, name='send'),
     path('send/plain', views.send_to_plain, name='send_to_plain'),
     path('simple/sms', views.simple_sms, name='simple_sms'),
+    path('simple/sms/<int:message_id>', views.simple_sms_resend, name='simple_sms_resend'),
     path('simple/sms/preview', views.simple_sms_preview, name='simple_sms_preview'),
     path('import/csv', views.import_csv_2, name='import_csv'),
     path('import/readings/csv', views.import_readings_csv, name='import_readings_csv'),
