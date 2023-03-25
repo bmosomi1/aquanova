@@ -23,7 +23,7 @@
             <h4>Resend Message</h4>
         </div>
 
-            <a href="{% url 'sms:simple_sms_resend' %}" class="btn btn-outline-primary pull-right">Config History</a>
+           
 
     </div>
     <hr style="margin-top: 1px !important;">
@@ -32,7 +32,7 @@
         <div class="col-md-3">
     </div>
 <div class="row">
-    <form action="{% url 'sms:edit_sys_config' client.id %}" method="post">
+    <form action="{% url 'sms:simple_sms_resend' client.id %}" method="post">
     {% csrf_token %}
    <div class="form-group row">
     <label for="inputEmail3" class="">Recipient:</label>
