@@ -247,7 +247,7 @@ class WaterNetwork(models.Model):
     conencted_clients = models.IntegerField(default=0, null=True)
     rate = models.FloatField(max_length=250, default=0,null=True)
     standing_charge = models.FloatField(max_length=250, default=0,null=True)
-    read_date = models.DateTimeField(auto_now_add=True)
+    read_date = models.DateTimeField(auto_now_add=True, blank=True)
 
     class Meta:
         verbose_name = 'Network'
