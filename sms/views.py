@@ -2298,6 +2298,7 @@ def add_main_readings(request):
 
             WaterMainReadings.objects.create(
             meter_num=meter_id,
+            network=main_meter.name,
             readings=readings,
             units_consumed=units_consumed
 
