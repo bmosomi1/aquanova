@@ -2284,7 +2284,7 @@ def add_main_readings(request):
         meter_id = request.POST['customers']
         last_m_readings = 0
 
-        main_meter = MainMeter.objects.get(id=meter_id)
+        main_meter = WaterNetwork.objects.get(id=meter_id)
         last_readings = WaterMainReadings.objects.filter().last()
         
         last_m_readings = main_meter.reading
