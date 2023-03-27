@@ -910,7 +910,7 @@ def main_meter(request):
             'courts': WaterCourt.objects.filter().count(),
             'readings': WaterMeterReadings.objects.filter().count(),
             'outbox': WaterMeterReadings.objects.filter().count(),
-            'main_accounts': MainMeter.objects.filter().count(),
+            'main_accounts': WaterNetwork.objects.filter().count(),
             'this_month' : this_month,
             'this_month_collections': WaterPaymentReceived.objects.filter(pay_date__month=today_month).aggregate(total=Sum('amount'))['total'] or 0,
             'last_month_collections': WaterPaymentReceived.objects.filter(pay_date__month=yesterday_month).aggregate(total=Sum('amount'))['total'] or 0,
@@ -1837,6 +1837,24 @@ def water_clients_court(request,court_id):
         'clients': clients
     }
     return render(request, 'sms/water_clients.html', context)
+
+def edit_water_network(request, network_id):
+    client = WaterNetwork.objects.get(id=network_id)
+    if request.method == 'POST':
+        client.standing_charge = request.POST['standing_charge']
+        client.rate = request.POST['rate']
+        
+        client.save()
+        #WaterNetwork.delete(self)
+
+       
+
+        messages.success(request, request.POST['rate'])
+        return redirect('sms:water_courts')
+    context = {
+        'client': client
+    }
+    return render(request, 'sms/edit_network.html', context)
 def water_reports(request):
     clients = WaterClientAll.objects.all()
     context = {

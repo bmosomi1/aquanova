@@ -17,7 +17,7 @@ urlpatterns = [
     path('services', views.services, name='services'),
     path('contact', views.contact, name='contact'),
 
-   
+   path('edit/water/station/<int:network_id>', views.edit_water_network, name='edit_water_network'),
     path('apps', views.apps, name='apps'),
     path('home', views.water_apps, name='water_apps'),
     path('main/meter', views.main_meter, name='main_meter'),
