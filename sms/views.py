@@ -867,7 +867,7 @@ def main_meter(request):
             'customer': customer,
             'contacts': Contact.objects.filter(group__customer_id=customer.id).count(),
             'water_clients': WaterClientAll.objects.filter().count(),
-            'main_accounts': MainMeter.objects.filter().count(),
+            'main_accounts': WaterNetwork.objects.filter().count(),
             'last_month_collections': WaterPaymentReceived.aggregate(Sum('amount')),
             'groups': Group.objects.filter(customer_id=customer.id).count(),
             'admins': CustomerSubAccounts.objects.filter(owner=customer.id).count()+1

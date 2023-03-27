@@ -241,6 +241,13 @@ class WaterNetwork(models.Model):
     name = models.CharField(max_length=250)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    last_meter_reading_date = models.CharField(max_length=250, null=True)
+    comment = models.EmailField(max_length=250, null=True)
+    reading = models.FloatField(max_length=250, default=0,null=True)
+    conencted_clients = models.IntegerField(default=0, null=True)
+    rate = models.FloatField(max_length=250, default=0,null=True)
+    standing_charge = models.FloatField(max_length=250, default=0,null=True)
+    read_date = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         verbose_name = 'Network'
