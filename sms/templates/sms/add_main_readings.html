@@ -28,7 +28,7 @@
                     <select name="customers" class="form-control" id="customers">
                         <option value="">Select Meter</option>
                         {% for client in meter %}
-                            <option value="{{ client.id }}">{{ client.name }} --- {{ client.reading }}</option>
+                            <option value="{{ client.id }}">{{ client.name }} -- {{ client.reading }}</option>
                         {% endfor %}
                     </select>
                 </div>
