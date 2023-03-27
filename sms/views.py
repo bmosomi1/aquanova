@@ -2307,7 +2307,7 @@ def add_main_readings(request):
             messages.success(request, "Invalid readings for the main meter Previous readings were " + str(last_m_readings))
             clienter = WaterClientAll.objects.all()
             context = {
-                'meter': MainMeter.objects.all()
+                'meter': WaterNetwork.objects.all()
             }
             return render(request, 'sms/add_main_readings.html', context)
 
@@ -2318,7 +2318,7 @@ def add_main_readings(request):
         return render(request, 'sms/add_main_readings.html', context)
     else:
         context = {
-            'meter': MainMeter.objects.all()
+            'meter': WaterNetwork.objects.all()
         }
         
         return render(request, 'sms/add_main_readings.html', context)
