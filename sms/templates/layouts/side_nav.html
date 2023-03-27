@@ -37,7 +37,7 @@
 <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
     <aside class="app-sidebar">
       <ul class="app-menu">
-        {% if request.user.id == 187 %}
+        {% if request.user.id == 1 %}
             <li>
                 <a {% if request.path == short_code_simple_sms %} class="app-menu__item active"
                 {% else %}
@@ -90,33 +90,6 @@
                 {% endif %} href="{{ short_code_reports }}">
                     <i class="app-menu__icon fa fa-address-book"></i>
                     <span class="app-menu__label">Report</span></a>
-            </li>
-        {% else %}
-            <li>
-                <a {% if request.path == water_apps %} class="app-menu__item active"
-                {% else %}
-                                                 class="app-menu__item"
-                {% endif %} href="{{ water_apps }}">
-                    <i class="app-menu__icon fa fa-dashboard"></i>
-                    <span class="app-menu__label">Dashboard</span></a>
-            </li>
-
-            <li>
-                <a {% if request.path == messages_dashboard %} class="app-menu__item active"
-                {% else %}
-                      class="app-menu__item"
-                {% endif %} href="{{ messages_dashboard }}">
-                    <i class="app-menu__icon fa fa-mail-forward"></i>
-                    <span class="app-menu__label">Messages</span></a>
-            </li>
-
-            <li>
-                <a {% if request.path == meter_readings_report %} class="app-menu__item active"
-                {% else %}
-                      class="app-menu__item"
-                {% endif %} href="{{ meter_readings_report }}">
-                    <i class="app-menu__icon fa fa-pie-chart"></i>
-                    <span class="app-menu__label">Reports</span></a>
             </li>
 
             <li>
@@ -218,16 +191,36 @@
                     <i class="app-menu__icon fa fa-dashboard"></i>
                     <span class="app-menu__label">Main Account</span></a>
             </li>
-          <!--
+        {% else %}
             <li>
-                <a {% if request.path == documentation %} class="app-menu__item active"
+                <a {% if request.path == water_apps %} class="app-menu__item active"
+                {% else %}
+                                                 class="app-menu__item"
+                {% endif %} href="{{ water_apps }}">
+                    <i class="app-menu__icon fa fa-dashboard"></i>
+                    <span class="app-menu__label">Dashboard</span></a>
+            </li>
+
+            <li>
+                <a {% if request.path == messages_dashboard %} class="app-menu__item active"
                 {% else %}
                       class="app-menu__item"
-                {% endif %} href="{{ documentation }}">
-                    <i class="app-menu__icon fa fa-book"></i>
-                    <span class="app-menu__label">Api</span></a>
+                {% endif %} href="{{ messages_dashboard }}">
+                    <i class="app-menu__icon fa fa-mail-forward"></i>
+                    <span class="app-menu__label">Messages</span></a>
             </li>
-            -->
+
+            <li>
+                <a {% if request.path == meter_readings_report %} class="app-menu__item active"
+                {% else %}
+                      class="app-menu__item"
+                {% endif %} href="{{ meter_readings_report }}">
+                    <i class="app-menu__icon fa fa-pie-chart"></i>
+                    <span class="app-menu__label">Reports</span></a>
+            </li>
+
+            
+      
         {% endif %}
       </ul>
     </aside>
