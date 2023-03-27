@@ -2313,7 +2313,7 @@ def add_main_readings(request):
 
 
         context = {
-            'meter': MainMeter.objects.all()
+            'meter': WaterNetwork.objects.all()
         }
         return render(request, 'sms/add_main_readings.html', context)
     else:
