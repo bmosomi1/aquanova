@@ -341,6 +341,7 @@ class WaterClientAll(models.Model):
     id_num = models.CharField(max_length=250, null=True)
     meter_num = models.CharField(max_length=250, null=True)
     customer_rate = models.FloatField( default=0,null=True)
+    standing_charge = models.FloatField( default=0,null=True)
     connection_fee = models.CharField(max_length=250, null=True)
     last_meter_reading_date = models.DateTimeField(auto_now_add=True,null=True)
     last_fine_date = models.DateTimeField(auto_now_add=True,null=True)

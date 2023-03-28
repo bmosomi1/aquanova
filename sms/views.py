@@ -1909,6 +1909,8 @@ def edit_water_client(request, client_id):
         client.email_address = request.POST['email_address']
         client.last_meter_reading = int(float(request.POST['last_meter_reading']))
         client.amount_due = int(float(request.POST['amount_due']))
+        client.customer_rate = int(float(request.POST['customer_rate']))
+        client.standing_charge = int(float(request.POST['standing_charge']))
         client.save()
         if amount_due1 != client.amount_due:
             if amount_due1>client.amount_due:
