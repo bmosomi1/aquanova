@@ -1970,7 +1970,7 @@ def simple_sms_resend(request, message_id):
 
 
 def disconnection_reminder(request, client_id):
-    client = WaterClientAll.objects.get(id=client_id)
+    client = WaterClientAll.objects.get(id=client_id,amount_due__gte=100)
     client_name=client.names
     client_phone=client.msisdn
     account_client=str(client.id)
