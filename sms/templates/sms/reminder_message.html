@@ -19,9 +19,16 @@
         <div class="col-sm-2">
 
         </div>
+        {% if client_bal > 100 %}
         <div class="col-sm-12">
             <h4>{{ reminder_message }}</h4>
         </div>
+        {% elsif %}
+        <div class="col-sm-12">
+            <h4>{{ low_balance }}</h4>
+        </div>
+        {% elsif %}
+
 
            
 

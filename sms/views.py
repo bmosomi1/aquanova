@@ -2004,7 +2004,8 @@ def disconnection_reminder(request, client_id):
     context = {
         'client': client,
         'reminder_message':client_message,
-        'client_bal':amountd
+        'client_bal':amountd,
+        'low_balance':'The client has low has low debt to be dionnected'
     }
     return render(request, 'sms/reminder_message.html', context)
 
