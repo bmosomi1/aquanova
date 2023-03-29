@@ -35,11 +35,11 @@
     <form action="{% url 'sms:disconnection_reminder' client.id %}" method="post">
     {% csrf_token %}
    
-  {% if amountd > 100 %}
-  <div>
-    <button type="submit" class="btn btn-primary pull-center" >Send Disconnection Reminder</button>
-  </div>
-  {% endif %} 
+    {% if amountd > 100 %}
+    <div>
+        <button type="submit" class="btn btn-primary pull-center" >Send Disconnection Reminder</button>
+    </div>
+    {% endif %} 
   </div>
 
 
