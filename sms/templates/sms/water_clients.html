@@ -37,7 +37,9 @@
                     <th>Last Readings</th>
                     <th>Amount Due</th>
                     <th>Reg Date</th>
+                    {% if request.user.is_superuser %}
                     <th>Actions</th>
+                    {% endif %}
 
                 </tr>
                 </thead>
