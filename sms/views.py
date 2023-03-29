@@ -1964,6 +1964,38 @@ def simple_sms_resend(request, message_id):
     }
     return render(request, 'sms/resend_message.html', context)
 
+
+
+
+
+
+def disconnection_reminder(request, client_id):
+    client = WaterClientAll.objects.get(id=client_id)
+    if request.method == 'POST':
+        client_name=client.names
+        client_phone=client.msisdn
+        client_balance=client.amount_due
+        client_message = "Dear" + client_name, "This is a final reminder to clear your outstanding water bill of Ksh." + client_balance + "by end of today. Please note, disconnection of normal supply will be done if we do not hear from you.aqua nova management."
+       
+        WaterOutbox.objects.create(
+            dest_msisdn=client_phone,
+            text_message=client_message,
+            user_id=100,
+            client=client_id
+            
+
+
+        )
+
+        messages.success(request, "Message resent sucessfully")
+        return redirect('sms:water_sent_sms')
+    context = {
+        'client': client,
+        'reminder_message':client_message
+    }
+    return render(request, 'sms/reminder_message.html', context)
+
+
 def edit_sys_config(request, client_id):
     client = WaterSysConf.objects.get(id=client_id)
     if request.method == 'POST':
