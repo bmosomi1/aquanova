@@ -1970,10 +1970,11 @@ def simple_sms_resend(request, message_id):
 
 
 def disconnection_reminder(request, client_id):
-    client = WaterClientAll.objects.get(id=client_id,amount_due__gte=100)
+    client = WaterClientAll.objects.get(id=client_id)
     client_name=client.names
     client_phone=client.msisdn
     account_client=str(client.id)
+    amountd=client.amount_due
     client_balance=str(client.amount_due)
     dear = "Dear "
     final = ", This is a final reminder to clear your outstanding water bill of Ksh."
@@ -2002,7 +2003,8 @@ def disconnection_reminder(request, client_id):
         return redirect('sms:water_sent_sms')
     context = {
         'client': client,
-        'reminder_message':client_message
+        'reminder_message':client_message,
+        'client_bal':amountd
     }
     return render(request, 'sms/reminder_message.html', context)
 
