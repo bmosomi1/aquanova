@@ -1979,7 +1979,7 @@ def disconnection_reminder(request, client_id):
     if request.method == 'POST':
         client_name=client.names
         client_phone=client.msisdn
-        client_balance=client.amount_due
+        client_balance=str(client.amount_due)
         client_message = "Dear" + client_name, "This is a final reminder to clear your outstanding water bill of Ksh." + client_balance + "by end of today. Please note, disconnection of normal supply will be done if we do not hear from you.aqua nova management."
        
         WaterOutbox.objects.create(
