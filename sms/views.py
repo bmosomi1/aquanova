@@ -1973,7 +1973,7 @@ def disconnection_reminder(request, client_id):
     client = WaterClientAll.objects.get(id=client_id)
     client_name=client.names
     client_phone=client.msisdn
-    account_client=client.id
+    account_client=str(client.id)
     client_balance=str(client.amount_due)
     dear = "Dear "
     final = ", This is a final reminder to clear your outstanding water bill of Ksh."
