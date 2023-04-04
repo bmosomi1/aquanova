@@ -51,9 +51,9 @@
 
 
                     <td>{{ meter_reading.account_number.id }}</td>
-                    <td>{{ meter_reading.readings }}</td>
-                    <td>{{ meter_reading.previous_reading }}</td>
-                    <td>{{ meter_reading.units_consumed }}</td>
+                    <td>{{ meter_reading.readings|round|int}}</td>
+                    <td>{{ meter_reading.previous_reading|round|int }}</td>
+                    <td>{{ meter_reading.units_consumed|round|int }}</td>
                     <td>{{ meter_reading.read_date |date:'Y-m-d H:i' }}</td>
 
                     <td>{{ meter_reading.reading_type }}</td>

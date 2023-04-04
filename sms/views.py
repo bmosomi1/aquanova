@@ -3883,9 +3883,9 @@ def import_water_clients(request):
                     network = s[0].name
 
                     cn = last_client.client_number
-                    cn_int = int(cn.split('GN-')[-1])
+                    cn_int = int(cn.split('AN-')[-1])
                     new_cn_int = cn_int + 1
-                    new_cn = f"GN-{new_cn_int}"
+                    new_cn = f"AN-{new_cn_int}"
                     customer_number = new_cn
                 if not WaterClientAll.objects.filter(names=names).exists():
                     WaterClientAll.objects.update_or_create(
