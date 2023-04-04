@@ -59,8 +59,8 @@
 
                     <td>{{ client.court }}</td>
                     <td>{{ client.network }}</td>
-                    <td>{{ client.last_meter_reading }}</td>
-                    <td>{{ client.amount_due }}</td>
+                    <td>{{ client.last_meter_reading|floatformat:0 }}</td>
+                    <td>{{ client.amount_due|floatformat:0 }}</td>
                     <td>{{ client.created_at|date:'Y:m:d' }}</td>
                     {% if request.user.is_superuser %}
                     <td>

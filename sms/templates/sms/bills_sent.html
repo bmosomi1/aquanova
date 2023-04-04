@@ -46,8 +46,8 @@
                     <td>{{ bills.account_number }}</td>
                     <td>{{ bills.dest_msisdn }}</td>
                     
-                    <td>{{ bills.curr_reading }}</td>
-                    <td>{{ bills.units_consumed }}</td>
+                    <td>{{ bills.curr_reading|floatformat:0 }}</td>
+                    <td>{{ bills.units_consumed|floatformat:0 }}</td>
                     <td>{{ bills.read_date |date:'Y-m-d H:i' }}</td>
 
                     <td>{{ bills.reading_type }}</td>
