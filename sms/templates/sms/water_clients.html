@@ -29,14 +29,14 @@
                     <th>Client Name</th>
                     <th>A/C</th>
                     <th>Phone 1</th>
-                    <th>Phone 2</th>
-                    <th>ID Number</th>
+                    
 
                     <th>Court</th>
                     <th>Network</th>
                     <th>Last Readings</th>
                     <th>Amount Due</th>
                     <th>Reg Date</th>
+                    <th>M. Read Date</th>
                     {% if request.user.is_superuser %}
                     <th>Actions</th>
                     {% endif %}
@@ -54,14 +54,15 @@
                     <td>{{ client.id }}</td>
                     {% endif %}
                     <td>{{ client.msisdn }}</td>
-                    <td>{{ client.msisdn2 }}</td>
-                    <td>{{ client.id_num }}</td>
+                    
+                    
 
                     <td>{{ client.court }}</td>
                     <td>{{ client.network }}</td>
                     <td>{{ client.last_meter_reading|floatformat:0 }}</td>
                     <td>{{ client.amount_due|floatformat:0 }}</td>
                     <td>{{ client.created_at|date:'Y:m:d' }}</td>
+                    <td>{{ client.last_meter_reading_date|date:'Y:m:d' }}</td>
                     {% if request.user.is_superuser %}
                     <td>
                         <a href="{% url 'sms:edit_water_client' client.id %}" title="Edit" class="btn btn-outline-primary btn-sm"><i class="fa fa-edit fa-lg"></i></a>
