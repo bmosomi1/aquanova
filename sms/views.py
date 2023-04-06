@@ -3475,7 +3475,8 @@ def water_manual_expenses(request):
     else:
         context = {
             'expenses': WaterExpenses.objects.filter().order_by('-id'),
-            'categories': ExpenseCategories.objects.filter().order_by('category_name')
+            'categories': ExpenseCategories.objects.filter().order_by('category_name'),
+            'staff': WaterStaff.objects.filter().order_by('category_name')
         }
         return render(request, 'sms/add_water_expenses.html', context)
     

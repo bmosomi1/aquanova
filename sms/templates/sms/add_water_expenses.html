@@ -20,7 +20,7 @@
             <form action="{% url 'sms:water_manual_expenses' %}" method="post">
                 {% csrf_token %}
                 <div class="form-group">
-                    <label>Client</label> <br>
+                    <label>Expense Category</label> <br>
                     <select name="meter" class="form-control" id="meter" style="width:300px" required>
                         <option value="">Select Category</option>
                         {% for client in category_name %}
@@ -31,6 +31,20 @@
                     
 
                 </div>
+                <div class="form-group">
+                    <label>Expense To</label> <br>
+                    <select name="meter" class="form-control" id="meter" style="width:300px" required>
+                        <option value="">Select Staff</option>
+                        {% for stf in staff %}
+                            <option value="{{ stf.id }}">{{ stf.names }} </option>
+                        {% endfor %}
+                    </select>
+
+                    
+
+                </div>
+
+
                 <div class="form-group">
                     <label>Amount</label>
                     <input class="form-control" type="text" name="amount"   style="width:300px">
@@ -51,31 +65,30 @@
             <table class="table table-hover table-bordered" id="sampleTable">
                 <thead>
                 <tr>
-                    <th>Names</th>
-                    <th>Account Number </th>
-                    <th>Amount</th>
-
-
-                    <th>Ref ID</th>
-                    <th>Payment Date</th>
-                    <th>Balance carried Forward</th>
-                    <th>Comments</th>
+                    <tr>
+                        <th>Expense Date</th>
+    
+                        
+                        <th>Amount</th>
+    
+                        <th>Accounted By</th>
+                        <th>Payment ID</th>
+                        
+                        
+    
+                    </tr>
 
                 </tr>
                 </thead>
                 <tbody>
                 {% for payment in WaterExpenses %}
                 <tr>
-                    <td><a href="{% url 'Invoices:client_invoices' payment.id %}">{{ payment.received_from }}</a></td>
-                    <td>{{ payment.client_id }}</td>
+                    <td>{{ payment.pay_date|date:'Y:m:d' }}</td>
+                    <td><a href="{% url 'sms:water_payments_clients' payment.payment_id %}">{{ payment.account_name }}</a></td>
+
                     <td>{{ payment.amount }}</td>
-                    <td>{{ payment.ref_id }}</td>
-
-                    <td>{{ payment.pay_date |date:'Y:m:d' }}</td>
-                    <td>{{ payment.balance_carried_forward }}</td>
-                    <td>{{ payment.comments }}</td>
-
-                    <td>
+                    <td>{{ payment.accounted_by }}</td>
+                    <td>{{ payment.confirmation_code }}</td>
                         <a href="{% url 'sms:edit_water_client' payment.id %}" title="Edit" class="btn btn-outline-primary btn-sm"><i class="fa fa-edit fa-lg"></i></a>
 {#                        <a href="" title="Approve" class="btn btn-outline-primary btn-sm"><i class="fa fa-check-square-o"></i></a>#}
                     </td>
