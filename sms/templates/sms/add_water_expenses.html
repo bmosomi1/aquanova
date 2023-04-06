@@ -85,7 +85,7 @@
                 {% for payment in expenses %}
                 <tr>
                     <td>{{ payment.pay_date|date:'Y:m:d' }}</td>
-                    <td><a href="{% url 'sms:water_payments_clients' payment.category_id %}">{{ payment.category.category_name }}</a></td>
+                    <td><a href="{% url 'sms:water_expense_category' payment.category_id %}">{{ payment.category.category_name }}</a></td>
 
                     <td>{{ payment.amount }}</td>
                     <td>{{ payment.accounted_by.names }}</td>
