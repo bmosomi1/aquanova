@@ -23,7 +23,7 @@
                     <label>Expense Category</label> <br>
                     <select name="meter" class="form-control" id="meter" style="width:300px" required>
                         <option value="">Select Category</option>
-                        {% for client in category_name %}
+                        {% for client in categories %}
                             <option value="{{ client.id }}">{{ client.names }} {{ client.id }}</option>
                         {% endfor %}
                     </select>
@@ -50,7 +50,7 @@
                     <input class="form-control" type="text" name="amount"   style="width:300px">
                 </div>
                 <div class="form-group">
-                    <label>payment ID</label>
+                    <label>Payment Code</label>
                     <input class="form-control" type="text" name="ref_id"   style="width:300px">
                 </div>
                 <div class="form-group">
