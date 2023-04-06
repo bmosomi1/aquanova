@@ -3462,7 +3462,7 @@ def water_manual_expenses(request):
 
         WaterExpenses.objects.create(
             category=category,
-            accounte_by=customer,            
+            accounted_by=customer,            
             amount=amount,
             payment_code=ref_id,            
             comments=comments            
