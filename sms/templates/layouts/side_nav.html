@@ -25,6 +25,7 @@
     {% url 'sms:water_payments' as water_payments %}
     {% url 'sms:water_payments_allocations' as water_payments_allocations %}
     {% url 'sms:water_system_config' as water_system_config %}
+    {% url 'sms:water_manual_expenses' as water_manual_expenses %}
 
 {#    {% url 'ShortCode:subs' as subs %}#}
     {% url 'ShortCode:incoming_sms' as incoming_sms %}
@@ -146,6 +147,14 @@
                     <i class="app-menu__icon fa fa-dashboard"></i>
                     <span class="app-menu__label">Main Account</span></a>
             </li>
+            <li>
+                <a {% if request.path == water_expenses %} class="app-menu__item active"
+                {% else %}
+                      class="app-menu__item"
+                {% endif %} href="{{ water_expenses }}">
+                    <i class="app-menu__icon fa fa-dashboard"></i>
+                    <span class="app-menu__label">Expenses</span></a>
+            </li>
         {% else %}
             <li>
                 <a {% if request.path == water_apps %} class="app-menu__item active"
@@ -197,6 +206,14 @@
                 {% endif %} href="{{ meter_replacement }}">
                     <i class="app-menu__icon fas fa-car"></i>
                     <span class="app-menu__label">Meter Replacement</span></a>
+            </li>
+            <li>
+                <a {% if request.path == water_expenses %} class="app-menu__item active"
+                {% else %}
+                      class="app-menu__item"
+                {% endif %} href="{{ water_expenses }}">
+                    <i class="app-menu__icon fa fa-dashboard"></i>
+                    <span class="app-menu__label">Expenses</span></a>
             </li>
 
             
