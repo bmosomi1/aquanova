@@ -790,6 +790,28 @@ class WaterPaymentReallocate(models.Model):
     comments = models.CharField(max_length=250, null=True)
     pay_date = models.DateTimeField(auto_now_add=True)
 
+class WaterStaff(models.Model):    
+    names = models.CharField(max_length=250)
+    msisdn = models.CharField(max_length=250)
+    id_num = models.CharField(max_length=250, null=True)
+    position = models.CharField(max_length=250, null=True)
+    salary_amount = models.CharField(max_length=250, null=True)    
+    comments = models.CharField(max_length=250, null=True)
+    add_date = models.DateTimeField(auto_now_add=True)
+
+class ExpenseCategories(models.Model):    
+    category_name = models.CharField(max_length=250)
+    comments = models.CharField(max_length=250)    
+    create_date = models.DateTimeField(auto_now_add=True)
+class WaterExpenses(models.Model):
+    category = models.ForeignKey(ExpenseCategories, on_delete=models.CASCADE)
+    description = models.CharField(max_length=250)
+    accouted_by = models.ForeignKey(WaterStaff, on_delete=models.CASCADE)
+    amount = models.FloatField()
+    payment_code = models.CharField(max_length=250, null=True)    
+    comments = models.CharField(max_length=250, null=True)
+    pay_date = models.DateTimeField(auto_now_add=True)
+
 class WaterSystemConfig(models.Model):
     standing_charge = models.CharField(max_length=250)
     rate = models.CharField(max_length=250)

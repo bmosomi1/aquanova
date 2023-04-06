@@ -1867,6 +1867,12 @@ def water_payments(request):
         'payments': payments
     }
     return render(request, 'sms/water_payments.html', context)
+def water_expenses(request):
+    expenses = WaterExpenses.objects.all().order_by('-id').values()
+    context = {
+        'expenses': expenses
+    }
+    return render(request, 'sms/water_expenses.html', context)
 def water_payments_clients(request,client_id):
     payments = WaterPaymentReceived.objects.filter(account_number=client_id)
     context = {
