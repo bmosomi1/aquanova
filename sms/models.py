@@ -806,7 +806,7 @@ class ExpenseCategories(models.Model):
 class WaterExpenses(models.Model):
     category = models.ForeignKey(ExpenseCategories, on_delete=models.CASCADE)
     description = models.CharField(max_length=250)
-    accouted_by = models.ForeignKey(WaterStaff, on_delete=models.CASCADE)
+    accounted_by = models.ForeignKey(WaterStaff, on_delete=models.CASCADE)
     amount = models.FloatField()
     payment_code = models.CharField(max_length=250, null=True)    
     comments = models.CharField(max_length=250, null=True)
