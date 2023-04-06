@@ -3447,7 +3447,7 @@ def main_meter_replacement(request):
             'clients': MainMeter.objects.filter().order_by('id')
         }
         return render(request, 'sms/main_meter_replace.html', context)
-def water_manual_expensed(request):
+def water_manual_expenses(request):
 
     if request.method == 'POST':
         comments = request.POST['comment']
