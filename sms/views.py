@@ -1887,7 +1887,7 @@ def water_expense_category(request,category_id):
     context = {
         'expenses': expense
     }
-    return render(request, 'sms/water_payments.html', context)
+    return render(request, 'sms/water_expenses.html', context)
 
 def client_invoicers(request, client_id):
     client = Client.objects.get(id=client_id)
