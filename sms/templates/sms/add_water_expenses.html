@@ -73,6 +73,7 @@
     
                         <th>Accounted By</th>
                         <th>Payment ID</th>
+                        <th>Comments</th>
                         
                         
     
@@ -81,16 +82,16 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for payment in WaterExpenses %}
+                {% for payment in expenses %}
                 <tr>
                     <td>{{ payment.pay_date|date:'Y:m:d' }}</td>
-                    <td><a href="{% url 'sms:water_payments_clients' payment.payment_id %}">{{ payment.account_name }}</a></td>
+                    <td><a href="{% url 'sms:water_payments_clients' payment.payment_id %}">{{ payment.category.category_name }}</a></td>
 
                     <td>{{ payment.amount }}</td>
-                    <td>{{ payment.accounted_by }}</td>
-                    <td>{{ payment.confirmation_code }}</td>
-                        <a href="{% url 'sms:edit_water_client' payment.id %}" title="Edit" class="btn btn-outline-primary btn-sm"><i class="fa fa-edit fa-lg"></i></a>
-{#                        <a href="" title="Approve" class="btn btn-outline-primary btn-sm"><i class="fa fa-check-square-o"></i></a>#}
+                    <td>{{ payment.accounted_by.names }}</td>
+                    <td>{{ payment.payment_code }}</td>
+                    <td>{{ payment.comments }}</td>
+                       
                     </td>
                 </tr>
                 {% endfor %}
