@@ -3463,8 +3463,9 @@ def water_manual_expenses(request):
         client_id = request.POST['meter']
         amount = request.POST['amount']
         ref_id = request.POST['ref_id']
+        cat_id = request.POST['cat_id']
         customer = WaterStaff.objects.filter(id=client_id).first()
-        category = ExpenseCategories.objects.filter(id=client_id).first()
+        category = ExpenseCategories.objects.filter(id=cat_id).first()
         names = customer.names
 
         phone_number=customer.msisdn
