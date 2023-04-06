@@ -3447,7 +3447,42 @@ def main_meter_replacement(request):
             'clients': MainMeter.objects.filter().order_by('id')
         }
         return render(request, 'sms/main_meter_replace.html', context)
+def water_manual_expensed(request):
 
+    if request.method == 'POST':
+        comments = request.POST['comment']
+        client_id = request.POST['meter']
+        amount = request.POST['amount']
+        ref_id = request.POST['ref_id']
+        customer = WaterClientAll.objects.filter(id=client_id).first()
+        names = customer.names
+
+        phone_number=customer.msisdn
+
+        WaterPaymentReceivedManual.objects.create(
+            client=customer,
+            dest_msisdn=phone_number,
+            received_from=names,
+            amount=amount,
+            confirmation_code=ref_id,
+            account_number=client_id,
+            account_name=names,
+            ref_id=ref_id,
+            comments=comments,
+            client_id=client_id
+
+        )
+
+
+        messages.success(request, 'Manual Payment added')
+        return redirect('sms:water_manual_payments')
+    else:
+        context = {
+            'payments': WaterPaymentReceivedManual.objects.filter().order_by('-id'),
+            'clients': WaterClientAll.objects.filter().order_by('names')
+        }
+        return render(request, 'sms/add_water_expenses.html', context)
+    
 def water_manual_payments(request):
 
     if request.method == 'POST':
