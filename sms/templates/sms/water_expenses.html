@@ -26,30 +26,34 @@
             <table class="table table-hover table-bordered" id="sampleTable">
                 <thead>
                 <tr>
-                    <th>Expense Date</th>
-
-                    
-                    <th>Amount</th>
-
-                    <th>Accounted By</th>
-                    <th>Payment ID</th>
-                    
-                    
+                    <tr>
+                        <th>Expense Date</th>
+    
+                        <th>Category</th>
+                        <th>Amount</th>
+    
+                        <th>Accounted By</th>
+                        <th>Payment ID</th>
+                        <th>Comments</th>
+                        
+                        
+    
+                    </tr>
 
                 </tr>
                 </thead>
                 <tbody>
-                {% for client in payments %}
+                {% for payment in expenses %}
                 <tr>
-                     <td>{{ client.pay_date|date:'Y:m:d' }}</td>
-                    <td><a href="{% url 'sms:water_payments_clients' client.client_id %}">{{ client.account_name }}</a></td>
+                    <td>{{ payment.pay_date|date:'Y:m:d' }}</td>
+                    <td><a href="{% url 'sms:water_payments_clients' payment.category_id %}">{{ payment.category.category_name }}</a></td>
 
-                    <td>{{ client.amount }}</td>
-                    <td>{{ client.accounted_by }}</td>
-                    <td>{{ client.confirmation_code }}</td>
-                    
-
-                    
+                    <td>{{ payment.amount }}</td>
+                    <td>{{ payment.accounted_by.names }}</td>
+                    <td>{{ payment.payment_code }}</td>
+                    <td>{{ payment.comments }}</td>
+                       
+                    </td>
                 </tr>
                 {% endfor %}
                 </tbody>
