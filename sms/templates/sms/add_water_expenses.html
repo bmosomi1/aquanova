@@ -19,7 +19,7 @@
 
             <form action="{% url 'sms:water_manual_payments' %}" method="post">
                 {% csrf_token %}
-                <div class="form-group">
+                <div class="col-sm-6">
                     <label>Client</label> <br>
                     <select name="meter" class="form-control" id="meter" style="width:300px" required>
                         <option value="">Select client</option>
@@ -28,11 +28,10 @@
                         {% endfor %}
                     </select>
 
-                    <label>Amount</label>
-                    <input class="form-control" type="text" name="amount"   style="width:300px">
+                    
 
                 </div>
-                <div class="form-group">
+                <div class="col-sm-6">
                     <label>Amount</label>
                     <input class="form-control" type="text" name="amount"   style="width:300px">
                 </div>
