@@ -14,10 +14,10 @@
 <div class="tile-title">
     <div class="row">
         <div class="col-sm-6">
-            <h4>Clients</h4>
+            <h4>Expenses</h4>
         </div>
         <div class="col-sm-6">
-            <a href="{% url 'sms:water_manual_payments' %}" class="btn btn-outline-primary pull-right">Add Expense</a>
+            <a href="{% url 'sms:water_manual_expenses' %}" class="btn btn-outline-primary pull-right">Add Expense</a>
         </div>
     </div>
     <hr>
@@ -26,15 +26,15 @@
             <table class="table table-hover table-bordered" id="sampleTable">
                 <thead>
                 <tr>
-                    <th>Received On</th>
+                    <th>Expense Date</th>
 
-                    <th>Accout Name</th>
+                    
                     <th>Amount</th>
 
-                    <th>Received From</th>
-                    <th>Confirmation Code</th>
-                    <th>Outstanding Balance</th>
-                    <th>Actions</th>
+                    <th>Accounted By</th>
+                    <th>Payment ID</th>
+                    
+                    
 
                 </tr>
                 </thead>
@@ -45,14 +45,11 @@
                     <td><a href="{% url 'sms:water_payments_clients' client.client_id %}">{{ client.account_name }}</a></td>
 
                     <td>{{ client.amount }}</td>
-                    <td>{{ client.received_from }}</td>
+                    <td>{{ client.accounted_by }}</td>
                     <td>{{ client.confirmation_code }}</td>
-                    <td>{{ client.balance_carried_forward }}</td>
+                    
 
-                    <td>
-                        <a href="{% url 'sms:edit_water_client' client.client_id %}" title="Edit" class="btn btn-outline-primary btn-sm"><i class="fa fa-edit fa-lg"></i></a>
-{#                        <a href="" title="Approve" class="btn btn-outline-primary btn-sm"><i class="fa fa-check-square-o"></i></a>#}
-                    </td>
+                    
                 </tr>
                 {% endfor %}
                 </tbody>

@@ -3454,32 +3454,28 @@ def water_manual_expenses(request):
         client_id = request.POST['meter']
         amount = request.POST['amount']
         ref_id = request.POST['ref_id']
-        customer = WaterClientAll.objects.filter(id=client_id).first()
+        customer = WaterStaff.objects.filter(id=client_id).first()
+        category = ExpenseCategories.objects.filter(id=client_id).first()
         names = customer.names
 
         phone_number=customer.msisdn
 
-        WaterPaymentReceivedManual.objects.create(
-            client=customer,
-            dest_msisdn=phone_number,
-            received_from=names,
+        WaterExpenses.objects.create(
+            category=category,
+            accounte_by=customer,            
             amount=amount,
-            confirmation_code=ref_id,
-            account_number=client_id,
-            account_name=names,
-            ref_id=ref_id,
-            comments=comments,
-            client_id=client_id
+            payment_code=ref_id,            
+            comments=comments            
 
         )
 
 
-        messages.success(request, 'Manual Payment added')
-        return redirect('sms:water_manual_payments')
+        messages.success(request, 'Expense added')
+        return redirect('sms:water_manual_expenses')
     else:
         context = {
-            'payments': WaterPaymentReceivedManual.objects.filter().order_by('-id'),
-            'clients': WaterClientAll.objects.filter().order_by('names')
+            'expenses': WaterExpenses.objects.filter().order_by('-id'),
+            'categories': ExpenseCategories.objects.filter().order_by('category_name')
         }
         return render(request, 'sms/add_water_expenses.html', context)
     
