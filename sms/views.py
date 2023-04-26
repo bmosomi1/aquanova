@@ -1992,11 +1992,13 @@ def disconnection_reminder(request, client_id):
     account_client=str(client.id)
     amountd=client.amount_due
     client_balance=str(client.amount_due)
+    current_date = datetime.now().date()
     dear = "Dear "
     final = ", This is a final reminder to clear your outstanding water bill of Ksh."
     payment = " through our Paybill 4108623, account "
-    disconnection = " by end of today. Please note that disconnection of normal supply will be done if we do not hear from you. AQUA NOVA Management- 0769721791"
-    client_message = dear  +  client_name + final + client_balance + payment + account_client  + disconnection
+    disconnection = " by end of today. "
+    dis = "Please note that disconnection of normal supply will be done if we do not hear from you. AQUA NOVA Management- 0769721791"
+    client_message = dear  +  client_name + final + client_balance + payment + account_client  + disconnection + current_date + dis
        
     if request.method == 'POST':
         client_name=client.names
