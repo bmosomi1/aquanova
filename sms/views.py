@@ -1992,7 +1992,7 @@ def disconnection_reminder(request, client_id):
     account_client=str(client.id)
     amountd=client.amount_due
     client_balance=str(client.amount_due)
-    current_date = datetime.now().date()
+    current_date = datetime.datetime.now().date()
     dear = "Dear "
     final = ", This is a final reminder to clear your outstanding water bill of Ksh."
     payment = " through our Paybill 4108623, account "
