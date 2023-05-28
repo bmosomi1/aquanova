@@ -41,7 +41,7 @@
                 <tbody>
                 {% for client in payments %}
                 <tr>
-                     <td>{{ client.pay_date|date:'Y:m:d' }}</td>
+                     <td>{{ client.pay_date|date:'Y:m:d H:i' }}</td>
                     <td><a href="{% url 'sms:water_payments_clients' client.client_id %}">{{ client.account_name }}</a></td>
 
                     <td>{{ client.amount }}</td>
